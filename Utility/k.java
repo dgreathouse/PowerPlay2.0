@@ -8,9 +8,10 @@ public final class k {
         public static final double AngleLimit = 0.8;
         public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.06,0.00475,0.0,0);
         //public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.05,0.00425,0.35,0);
-        public static final PIDFCoefficients MoveRotatePIDFCoef= new PIDFCoefficients(.01,0,0,0);
-        public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.01,0.001,0,0);
+        public static final PIDFCoefficients MoveRotatePIDFCoef= new PIDFCoefficients(.008,0,0,0);
+        public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.005,0.001,0,0);
         public static final double RotationScale = 0.5;
+        public static final double DriveScale = 0.5;
     }
 
     public static final class LIFT {

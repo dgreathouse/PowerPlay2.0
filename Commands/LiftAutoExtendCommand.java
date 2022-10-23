@@ -18,7 +18,7 @@ public class LiftAutoExtendCommand extends CommandBase {
     @Override
     public void initialize(){
 
-        m_lift.armMove(m_angle);
+
     }
     @Override
     public void execute(){

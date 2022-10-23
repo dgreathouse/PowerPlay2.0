@@ -52,6 +52,7 @@ public class TeleOp_1 extends CommandOpMode {
 
         Hw.gpDriver.getGamepadButton(GamepadKeys.Button.Y).whenPressed(new InstantCommand(() -> drive.resetGyro()));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.Y).whenPressed(new InstantCommand(() -> drive.setGyro()));
+        Hw.gpOperator.getGamepadButton(GamepadKeys.Button.A).whenPressed(new InstantCommand(() -> lift.resetEncoder()));
 
         // register Subsystems
         register(drive, lift, claw, arm);

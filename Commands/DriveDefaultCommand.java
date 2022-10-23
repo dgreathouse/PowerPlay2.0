@@ -26,13 +26,12 @@ public class DriveDefaultCommand extends CommandBase {
     }
     @Override
     public void execute(){
-        y = -Hw.gpDriver.getLeftY();
-        x = -Hw.gpDriver.getLeftX();
-        z = -Hw.gpDriver.getRightX();
-
-        z = z * k.DRIVE.RotationScale;
+        y = -Hw.gpDriver.getLeftY() * k.DRIVE.DriveScale;
+        x = -Hw.gpDriver.getLeftX() * k.DRIVE.DriveScale;;
+        z = -Hw.gpDriver.getRightX() * k.DRIVE.RotationScale;
 
         ang = -Hw.imu.getHeading();
+
         if(!m_driveSubsystem.getIsFieldOriented()){
             ang = 0.0;
         }

@@ -53,9 +53,9 @@ public class AutoStraightHi extends SequentialCommandGroup {
             // Sense the color after a delay while pushing cone
             new ColorSensorSenseCommand(_opMode, _color,0.5),
             // Drive forward to center line
-            new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.6, 24, 7.0),
+            new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.6, 22, 7.0),
             // Drive to Hi Junction at an angle
-            new DriveAutoMoveCommand(_opMode,_drive, toHiJunction, 0.5, 12, 5.0),
+            new DriveAutoMoveCommand(_opMode,_drive, toHiJunction, 0.5, 10, 5.0),
             // Open the Claw to drop on Hi Junction
             new ClawAutoCommand(_opMode, _claw, ClawEnum.OPEN),
             // Drive back to line up with stack of 5 cones
