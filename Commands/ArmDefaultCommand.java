@@ -26,7 +26,7 @@ public class ArmDefaultCommand extends CommandBase {
     }
     @Override
     public void execute(){
-        Hw.liftEx.setPosition(k.LIFT.AutoExtendAngle);
+        Hw.liftEx.setPosition(k.ARM.AutoExtendAngle);
 
 
     }

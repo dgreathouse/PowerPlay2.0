@@ -56,6 +56,7 @@ public class Hw {
         lift.setRunMode(Motor.RunMode.RawPower);
         lift.setZeroPowerBehavior(Motor.ZeroPowerBehavior.BRAKE);
         lift.setDistancePerPulse(k.LIFT.InchPerCnt);
+        lift.encoder.getDistance();
 
         liftDIO = opMode.hardwareMap.get(DigitalChannel.class, "dio");
         liftDIO.setMode(DigitalChannel.Mode.INPUT);
@@ -78,6 +79,7 @@ public class Hw {
         gpOperator = new GamepadEx(opMode.gamepad2);
 
         opMode.telemetry.addData(">", "Hardware Initialized");
+
 
     }
 }

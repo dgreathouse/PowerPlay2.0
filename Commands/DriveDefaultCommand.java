@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.DriveSubsystem;
 import org.firstinspires.ftc.teamcode.Utility.k;
 
 public class DriveDefaultCommand extends CommandBase {
-    @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+
     private final DriveSubsystem m_driveSubsystem;
     CommandOpMode m_opMode;
 

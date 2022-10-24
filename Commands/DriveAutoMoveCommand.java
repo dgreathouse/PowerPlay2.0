@@ -37,7 +37,6 @@ public class DriveAutoMoveCommand extends CommandBase {
     }
     @Override
     public void initialize(){
-        //Hw.imu.reset();
         m_pidfMove = new PIDFController(k.DRIVE.MovePIDFCoef);
         m_pidfMove.setOutputRange(0,m_maxSpeed);
         m_pidfMove.setSetpoint(m_inches);
@@ -56,7 +55,6 @@ public class DriveAutoMoveCommand extends CommandBase {
         m_pidfMoveRotate.setIntegralRange(-0.4, 0.4);
         m_pidfMoveRotate.setTolerance(0.01);
         m_pidfMoveRotate.enable();
-
     }
     @Override
     public void execute(){

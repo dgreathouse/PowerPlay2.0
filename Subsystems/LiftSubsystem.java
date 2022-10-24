@@ -12,6 +12,7 @@ public class LiftSubsystem extends SubsystemBase {
     double m_angle;
     boolean m_limitReached = false;
     double m_speed;
+
     public LiftSubsystem(CommandOpMode _opMode){
 
         m_opMode = _opMode;
@@ -36,6 +37,7 @@ public class LiftSubsystem extends SubsystemBase {
         }else if ( _speed < 0 && in < k.LIFT.LimitDown_In){
             m_speed = 0;
         }else if (_speed > 0 && m_limitReached){
+
             m_speed = 0;
         }else {
             m_speed = _speed;
@@ -45,7 +47,7 @@ public class LiftSubsystem extends SubsystemBase {
         }else if(_speed < 0 && in < 8){
             m_speed = m_speed /2;
         }
-        Hw.lift.set(m_speed);
+        Hw.lift.set(m_speed * k.LIFT.SpeedRatio);
     }
 
     /** Autonomous move to goto a position of counts
@@ -56,6 +58,9 @@ public class LiftSubsystem extends SubsystemBase {
         Hw.lift.set(_maxSpeed);
     }
 
+    public void setSpeedRatio(double _ratio){
+        k.LIFT.SpeedRatio = _ratio;
+    }
     public void resetEncoder(){
         Hw.lift.encoder.reset();
     }

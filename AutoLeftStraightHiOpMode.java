@@ -6,7 +6,6 @@ import com.arcrobotics.ftclib.util.Direction;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.Commands.AutoStraightHi;
-import org.firstinspires.ftc.teamcode.Commands.LiftAutoDefaultCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.ArmSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.ClawSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.ColorSensorSubsystem;
@@ -36,8 +35,6 @@ public class AutoLeftStraightHiOpMode extends CommandOpMode {
         m_arm = new ArmSubsystem(this);
 
         // Create Commands
-        LiftAutoDefaultCommand liftAutoDefaultCommand = new LiftAutoDefaultCommand(this,m_lift);
-
         m_auto = new AutoStraightHi(this,m_drive, m_lift, m_claw, m_color, m_arm, Direction.LEFT);
 
         // register Subsystems

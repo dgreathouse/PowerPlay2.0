@@ -4,11 +4,12 @@ import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 
 import org.firstinspires.ftc.teamcode.Utility.Hw;
+import org.firstinspires.ftc.teamcode.Utility.RGB;
 import org.firstinspires.ftc.teamcode.Utility.k;
 
 public class ColorSensorSubsystem extends SubsystemBase {
     CommandOpMode m_opMode;
-
+    RGB rgb = new RGB();
     public ColorSensorSubsystem(CommandOpMode _opMode){
         m_opMode = _opMode;
     }
@@ -28,6 +29,13 @@ public class ColorSensorSubsystem extends SubsystemBase {
         k.COLOR.ColorNumber = rtn;
 
         return rtn;
+    }
+    public RGB getColors(){
+        rgb.R =  Hw.colorSensor.red();
+        rgb.G = Hw.colorSensor.green();
+        rgb.B = Hw.colorSensor.blue();
+
+        return rgb;
     }
     @Override
     public void periodic(){

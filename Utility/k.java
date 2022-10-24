@@ -11,13 +11,13 @@ public final class k {
         public static final PIDFCoefficients MoveRotatePIDFCoef= new PIDFCoefficients(.008,0,0,0);
         public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.005,0.001,0,0);
         public static final double RotationScale = 0.5;
-        public static final double DriveScale = 0.5;
+        public static double DriveScale = 0.5;
     }
 
     public static final class LIFT {
         public static double LimitUp_In = 33.5;
         public static double LimitDown_In = 0.0;
-        public static final double AutoExtendAngle = 0;
+        public static double SpeedRatio = 1.0;
         public static final double AutoPID_P = 0.3;
         public static final int ConeHeightLow = 13;
         public static final int ConeHeightMid = 25;
@@ -42,6 +42,9 @@ public final class k {
         public static final int ColorBlueLimit = 300;
         public static int ColorNumber = 1;
 
+    }
+    public static final class ARM {
+        public static final double AutoExtendAngle = 0;
     }
 
 

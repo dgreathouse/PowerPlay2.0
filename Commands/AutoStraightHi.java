@@ -36,7 +36,7 @@ public class AutoStraightHi extends SequentialCommandGroup {
             ),
             new ParallelCommandGroup(
                     // The lift servo should exit immediately but the command should continue to the servo
-                    new ArmAutoExtendCommand(_opMode,_arm, k.LIFT.AutoExtendAngle),
+                    new ArmAutoExtendCommand(_opMode,_arm, k.ARM.AutoExtendAngle),
                     // Raise Lift to take up the slack
                     new LiftAutoMoveCommand(_opMode, _lift, 3.75, 0.19, 2)
             ),

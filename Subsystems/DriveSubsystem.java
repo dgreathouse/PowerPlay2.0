@@ -24,6 +24,7 @@ public class DriveSubsystem extends SubsystemBase {
     }
     boolean m_isFieldOriented = true;
     double m_FOMAngle = 0;
+
     public void driveCartesianIK(double _ySpeed, double _xSpeed, double _zRotation, double _gyroAngle){
         double leftSpeed = 0.0;
         double rightSpeed = 0.0;
@@ -60,8 +61,10 @@ public class DriveSubsystem extends SubsystemBase {
         double back = Hw.backDrive.getDistance();
         switch (_angle){
             case ang_0: // Left, Right
-            case ang_180:
                 rtn = (left - right)/2;
+                break;
+            case ang_180:
+                rtn = -(left - right)/2;
                 break;
             case ang_60: // Left, Back
                 rtn = (left - back)/2;
@@ -70,8 +73,10 @@ public class DriveSubsystem extends SubsystemBase {
                 rtn = -(left - back)/2;
                 break;
             case ang_120: // Right, Back
-            case ang_300:
                 rtn = (-right + back)/2;
+                break;
+            case ang_300:
+                rtn = -(-right + back)/2;
                 break;
             default:
                 rtn = 0;
@@ -111,11 +116,19 @@ public class DriveSubsystem extends SubsystemBase {
         m_FOMAngle = angle;
         Hw.imu.setOffset(angle);
     }
+    public void setGyro(double X, double Y){
+        double angle = MyMath.getAngle(X, Y);
+        m_FOMAngle = angle;
+        Hw.imu.setOffset(angle);
+    }
     public void setIsFieldOriented(){
         m_isFieldOriented = !m_isFieldOriented;
     }
     public boolean getIsFieldOriented() {
         return m_isFieldOriented;
+    }
+    public void setSpeedRatio(double _ratio){
+        k.DRIVE.DriveScale = _ratio;
     }
     public void resetMotors(){
         Hw.leftDrive.resetEncoder();
