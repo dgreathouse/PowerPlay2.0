@@ -2,12 +2,14 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.SubsystemBase;
+import com.arcrobotics.ftclib.gamepad.GamepadKeys;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Utility.Hw;
 import org.firstinspires.ftc.teamcode.Utility.DAngle;
 import org.firstinspires.ftc.teamcode.Utility.MyMath;
+import org.firstinspires.ftc.teamcode.Utility.SlewRateLimiter;
 import org.firstinspires.ftc.teamcode.Utility.Vector2d;
 import org.firstinspires.ftc.teamcode.Utility.k;
 
@@ -22,9 +24,19 @@ public class DriveSubsystem extends SubsystemBase {
     public DriveSubsystem(CommandOpMode _opMode){
         m_opMode = _opMode;
     }
-    boolean m_isFieldOriented = true;
-    double m_FOMAngle = 0;
+    public boolean m_isFieldOriented = true;
+    public double m_FOMAngle = 0;
+    public boolean m_isSlewLimited = false;
 
+    public SlewRateLimiter xSRL;
+    public SlewRateLimiter ySRL;
+    public SlewRateLimiter zSRL;
+
+    public DriveSubsystem(){
+        xSRL = new SlewRateLimiter(k.DRIVE.SlewRateLimit);
+        ySRL = new SlewRateLimiter(k.DRIVE.SlewRateLimit);
+        zSRL = new SlewRateLimiter(k.DRIVE.SlewRateLimit);
+    }
     public void driveCartesianIK(double _ySpeed, double _xSpeed, double _zRotation, double _gyroAngle){
         double leftSpeed = 0.0;
         double rightSpeed = 0.0;
@@ -139,6 +151,16 @@ public class DriveSubsystem extends SubsystemBase {
         Hw.rightDrive.setRunMode(Motor.RunMode.RawPower);
         Hw.backDrive.setRunMode(Motor.RunMode.RawPower);
     }
+    public void setSlewRate(){
+        double val =  Hw.gpDriver.getTrigger(GamepadKeys.Trigger.LEFT_TRIGGER);
+        k.DRIVE.SlewRateLimit = val;
+        xSRL.setRateLimit(val);
+        ySRL.setRateLimit(val);
+        zSRL.setRateLimit(val);
+    }
+    public void toggleSlewRateLimiter(){
+        m_isSlewLimited = !m_isSlewLimited;
+    }
     @Override
     public void periodic() {
         m_opMode.telemetry.addData("Left Inches = ", Hw.leftDrive.getDistance());
@@ -147,6 +169,7 @@ public class DriveSubsystem extends SubsystemBase {
         m_opMode.telemetry.addData("Robot Ang Deg = ", -Hw.imu.getAbsoluteHeading());
         m_opMode.telemetry.addData("zRotation = ", m_zRotation);
         m_opMode.telemetry.addData("FOM Angle = ", m_FOMAngle);
+        m_opMode.telemetry.addData("SlewRate = ", k.DRIVE.SlewRateLimit);
     }
 
 }

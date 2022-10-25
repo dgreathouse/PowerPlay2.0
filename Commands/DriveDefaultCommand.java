@@ -6,6 +6,7 @@ import com.arcrobotics.ftclib.controller.PIDFController;
 
 import org.firstinspires.ftc.teamcode.Utility.Hw;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveSubsystem;
+import org.firstinspires.ftc.teamcode.Utility.SlewRateLimiter;
 import org.firstinspires.ftc.teamcode.Utility.k;
 
 public class DriveDefaultCommand extends CommandBase {
@@ -14,6 +15,7 @@ public class DriveDefaultCommand extends CommandBase {
     CommandOpMode m_opMode;
 
     double x,y,z, ang;
+
 
     public DriveDefaultCommand(CommandOpMode _opMode, DriveSubsystem _driveSubsystem){
         m_driveSubsystem = _driveSubsystem;
@@ -26,10 +28,15 @@ public class DriveDefaultCommand extends CommandBase {
     }
     @Override
     public void execute(){
-        y = -Hw.gpDriver.getLeftY() * k.DRIVE.DriveScale;
-        x = -Hw.gpDriver.getLeftX() * k.DRIVE.DriveScale;;
-        z = -Hw.gpDriver.getRightX() * k.DRIVE.RotationScale;
-
+        if(m_driveSubsystem.m_isSlewLimited){
+            x = m_driveSubsystem.xSRL.calculate(-Hw.gpDriver.getLeftX());
+            y = m_driveSubsystem.ySRL.calculate(-Hw.gpDriver.getLeftY());
+            z = m_driveSubsystem.zSRL.calculate(-Hw.gpDriver.getRightX());
+        }else {
+            y = -Hw.gpDriver.getLeftY() * k.DRIVE.DriveScale;
+            x = -Hw.gpDriver.getLeftX() * k.DRIVE.DriveScale;
+            z = -Hw.gpDriver.getRightX() * k.DRIVE.RotationScale;
+        }
         ang = -Hw.imu.getHeading();
 
         if(!m_driveSubsystem.getIsFieldOriented()){
