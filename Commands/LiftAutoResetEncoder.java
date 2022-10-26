@@ -2,8 +2,10 @@ package org.firstinspires.ftc.teamcode.Commands;
 
 import com.arcrobotics.ftclib.command.CommandBase;
 import com.arcrobotics.ftclib.command.CommandOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Subsystems.LiftSubsystem;
+import org.firstinspires.ftc.teamcode.Utility.Hw;
 
 public class LiftAutoResetEncoder extends CommandBase {
     LiftSubsystem m_lift;
@@ -15,8 +17,9 @@ public class LiftAutoResetEncoder extends CommandBase {
     }
     @Override
     public void initialize(){
-
-        m_lift.resetEncoder();
+        Hw.lift.motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Hw.lift.motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+       // m_lift.resetEncoder();
     }
     @Override
     public void execute(){

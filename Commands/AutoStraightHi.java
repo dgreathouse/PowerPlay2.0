@@ -43,10 +43,10 @@ public class AutoStraightHi extends SequentialCommandGroup {
             // Reset the encoder so 0 is all the way down
             new LiftAutoResetEncoder(_opMode,_lift),
             // Raise lift to above the Cone
-            new LiftAutoMoveCommand(_opMode, _lift, 10, 0.75, 2),
+            //new LiftAutoMoveCommand(_opMode, _lift, 10, 0.75, 2),
             new ParallelCommandGroup(
                     // Raise lift to above the Cone
-                    new LiftAutoMoveCommand(_opMode, _lift, k.LIFT.ConeHeightHi, 0.65, 3),
+                    new LiftAutoMoveCommand(_opMode, _lift, k.LIFT.ConeHeightHi, 1.0, 4),
                     // Drive forward to center line
                     new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, 8.5, 3.0)
             ),
@@ -54,24 +54,29 @@ public class AutoStraightHi extends SequentialCommandGroup {
             new ColorSensorSenseCommand(_opMode, _color,0.5),
             // Drive forward to center line
             new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.6, 22, 7.0),
+
+                //
+            new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.6, -10, 7.0),
+                //
+            new LiftAutoMoveCommand(_opMode, _lift, 0, 0.75, 4)
             // Drive to Hi Junction at an angle
-            new DriveAutoMoveCommand(_opMode,_drive, toHiJunction, 0.5, 10, 5.0),
-            // Open the Claw to drop on Hi Junction
-            new ClawAutoCommand(_opMode, _claw, ClawEnum.OPEN),
-            // Drive back to line up with stack of 5 cones
-            new DriveAutoMoveCommand(_opMode,_drive, awayHiJunction, 0.5, 10, 5.0),
-            new ParallelCommandGroup(
-                    // Rotate to the stack of 5 cones
-                    new DriveAutoRotateCommand(_opMode, _drive, rotateSign * 90, 0.5, 5.0),
-                    // Lower lift to Cone 5 height
-                    new LiftAutoMoveCommand(_opMode, _lift, k.LIFT.ConeHeight5, 0.75, 3)
-            ),
-            new ParallelCommandGroup(
-                    // Drive backwards to signal location to park
-                    new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.75, -((k.COLOR.ColorNumber-2)*24), 3.0), //
-                    // Lower Lift so the transition from Auto to Teleop does not let go of cone
-                    new LiftAutoMoveCommand(_opMode,_lift,k.LIFT.ConeHeightJunction,0.5,4)
-            )
+//            new DriveAutoMoveCommand(_opMode,_drive, toHiJunction, 0.5, 10, 5.0),
+//            // Open the Claw to drop on Hi Junction
+//            new ClawAutoCommand(_opMode, _claw, ClawEnum.OPEN),
+//            // Drive back to line up with stack of 5 cones
+//            new DriveAutoMoveCommand(_opMode,_drive, awayHiJunction, 0.5, 10, 5.0),
+//            new ParallelCommandGroup(
+//                    // Rotate to the stack of 5 cones
+//                    new DriveAutoRotateCommand(_opMode, _drive, rotateSign * 90, 0.5, 5.0),
+//                    // Lower lift to Cone 5 height
+//                    new LiftAutoMoveCommand(_opMode, _lift, k.LIFT.ConeHeight5, 0.75, 3)
+//            ),
+//            new ParallelCommandGroup(
+//                    // Drive backwards to signal location to park
+//                    new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.75, -((k.COLOR.ColorNumber-2)*24), 3.0), //
+//                    // Lower Lift so the transition from Auto to Teleop does not let go of cone
+//                    new LiftAutoMoveCommand(_opMode,_lift,k.LIFT.ConeHeightJunction,0.5,4)
+//            )
 
         );
     }
