@@ -38,7 +38,7 @@ public class AutoStraightHi extends SequentialCommandGroup {
                     // The lift servo should exit immediately but the command should continue to the servo
                     new ArmAutoExtendCommand(_opMode,_arm, k.ARM.AutoExtendAngle),
                     // Raise Lift to take up the slack
-                    new LiftAutoMoveCommand(_opMode, _lift, 3.75, 0.19, 2)
+                    new LiftAutoMoveCommand(_opMode, _lift, 3.75, 0.25, 1.7)
             ),
             // Reset the encoder so 0 is all the way down
             new LiftAutoResetEncoder(_opMode,_lift),
@@ -46,7 +46,7 @@ public class AutoStraightHi extends SequentialCommandGroup {
             //new LiftAutoMoveCommand(_opMode, _lift, 10, 0.75, 2),
             new ParallelCommandGroup(
                     // Raise lift to above the Cone
-                    new LiftAutoMoveCommand(_opMode, _lift, k.LIFT.ConeHeightHi, 1.0, 4),
+                    new LiftAutoMoveCommand(_opMode, _lift, k.LIFT.ConeHeightMid, 1.0, 4),
                     // Drive forward to center line
                     new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, 8.5, 3.0)
             ),

@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Utility;
 
 import com.arcrobotics.ftclib.gamepad.GamepadEx;
-import com.arcrobotics.ftclib.hardware.RevIMU;
 import com.arcrobotics.ftclib.hardware.SimpleServo;
 import com.arcrobotics.ftclib.hardware.motors.Motor;
 import com.arcrobotics.ftclib.hardware.motors.MotorEx;
@@ -22,7 +21,8 @@ public class Hw {
     public static BNOimu imu;
     public static GamepadEx gpDriver, gpOperator;
     public static RevColorSensorV3 colorSensor;
-    public static DigitalChannel liftDIO;
+    public static DigitalChannel liftDIOTop;
+    public static DigitalChannel liftDIOBot;
     private LinearOpMode opMode = null;
 
     public Hw(LinearOpMode _opMode) {
@@ -58,8 +58,11 @@ public class Hw {
         lift.setDistancePerPulse(k.LIFT.InchPerCnt);
         lift.encoder.getDistance();
 
-        liftDIO = opMode.hardwareMap.get(DigitalChannel.class, "dio");
-        liftDIO.setMode(DigitalChannel.Mode.INPUT);
+        liftDIOTop = opMode.hardwareMap.get(DigitalChannel.class, "diot");
+        liftDIOTop.setMode(DigitalChannel.Mode.INPUT);
+
+        liftDIOBot = opMode.hardwareMap.get(DigitalChannel.class, "diob");
+        liftDIOBot.setMode(DigitalChannel.Mode.INPUT);
 
         clawServo = new SimpleServo(opMode.hardwareMap, "c", 0, 270);
 
