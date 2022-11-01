@@ -13,6 +13,8 @@ The Robot for this code is as follows.
    
 ## Lift:
    Single Gobilda pulley system to raise a one stage lift 35 inches
+   
+## Arm
    Lift has a servo that extends an arm up at the beginning of the match to create the 35 inch extension.
 
 ## Claw:
@@ -28,5 +30,5 @@ Park in sensed location
 
 
 ## Conventions for motor hookup
-Power Red to Red, Black to Black, Rotate Right Encoder is positive for all Encoders
+Power Red to Red, Black to Black, Rotate Clockwise Encoder is positive for all Encoders
 
