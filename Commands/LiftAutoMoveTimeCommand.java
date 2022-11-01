@@ -21,6 +21,7 @@ public class LiftAutoMoveTimeCommand extends CommandBase {
         m_opMode = _opMode;
         m_speed = _speed;
         m_timeOut = _timeOut;
+
     }
     @Override
     public void initialize(){

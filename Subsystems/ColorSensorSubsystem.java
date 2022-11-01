@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.SubsystemBase;
 
+import org.firstinspires.ftc.teamcode.Utility.DAngle;
 import org.firstinspires.ftc.teamcode.Utility.Hw;
 import org.firstinspires.ftc.teamcode.Utility.RGB;
 import org.firstinspires.ftc.teamcode.Utility.k;
@@ -36,6 +37,12 @@ public class ColorSensorSubsystem extends SubsystemBase {
         rgb.B = Hw.colorSensor.blue();
 
         return rgb;
+    }
+    public DAngle getAutoAngle(){
+        if(k.COLOR.ColorNumber == 3){
+            return DAngle.ang_180;
+        }
+        return DAngle.ang_0;
     }
     @Override
     public void periodic(){

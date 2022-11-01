@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 public final class k {
     public static final class DRIVE {
-        public static final double InchPerCount = 0.03095;
+        public static final double InchPerCount = 0.0315;
         public static final double AngleLimit = 0.8;
-        public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.06,0.00475,0.0,0);
-        //public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.05,0.00425,0.35,0);
+        public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.25,0.075,0.0,0);
+        //public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.06,0.00475,0.0,0);
         public static final PIDFCoefficients MoveRotatePIDFCoef= new PIDFCoefficients(.008,0,0,0);
         public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.005,0.001,0,0);
         public static final double RotationScale = 0.5;
@@ -32,7 +32,7 @@ public final class k {
 
     public static final class CLAW {
         public static final double Open = 175;  // Leave
-        public static final double Close = 105;
+        public static final double Close = 113;
       //  public static final double RightOpen = 0;  // Leave
       //  public static final double RightClose = RightOpen + 60;
     }
