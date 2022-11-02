@@ -31,8 +31,9 @@ public final class k {
     }
 
     public static final class CLAW {
-        public static final double Open = 175;  // Leave
-        public static final double Close = 113;
+        public static final double Open = 155;  // Leave
+        public static final double Close = 105;
+        public static final double FullOpen = 175;
       //  public static final double RightOpen = 0;  // Leave
       //  public static final double RightClose = RightOpen + 60;
     }

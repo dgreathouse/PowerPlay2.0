@@ -59,7 +59,5 @@ public class AutoStraightHi extends SequentialCommandGroup {
             new DriveAutoRotateCommand(_opMode, _drive, 0, 0.5, 3.0)
 
         );
-        _opMode.telemetry.addData("Auto Complete","");
-        _opMode.telemetry.update();
     }
 }

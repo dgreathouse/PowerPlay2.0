@@ -62,6 +62,7 @@ public class TeleOp_1 extends CommandOpMode {
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.DPAD_RIGHT).whenPressed(new InstantCommand(() -> lift.setSpeedRatio(0.75)));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.DPAD_DOWN).whenPressed(new InstantCommand(() -> lift.setSpeedRatio(0.5)));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.DPAD_LEFT).whenPressed(new InstantCommand(() -> lift.setSpeedRatio(0.25)));
+        Hw.gpOperator.getGamepadButton(GamepadKeys.Button.X).whenPressed(new InstantCommand(() -> claw.openFull()));
 
         // Driver Buttons
         Hw.gpDriver.getGamepadButton(GamepadKeys.Button.BACK).whenPressed(new InstantCommand(() -> drive.setIsFieldOriented()));
