@@ -56,6 +56,7 @@ public class TeleOp_1 extends CommandOpMode {
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER)
                 .and(Hw.gpOperator.getGamepadButton(GamepadKeys.Button.LEFT_BUMPER).negate())
                 .whenActive(new InstantCommand(() -> claw.close(), claw));
+        Hw.gpOperator.getGamepadButton((GamepadKeys.Button.LEFT_BUMPER)).whenReleased(new InstantCommand(() -> claw.disable()));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.Y).whenPressed(new InstantCommand(() -> drive.setGyro(Hw.gpOperator.getLeftX(),Hw.gpOperator.getLeftY())));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.A).whenPressed(new InstantCommand(() -> lift.resetEncoder()));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.DPAD_UP).whenPressed(new InstantCommand(() -> lift.setSpeedRatio(1.0)));
@@ -63,6 +64,7 @@ public class TeleOp_1 extends CommandOpMode {
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.DPAD_DOWN).whenPressed(new InstantCommand(() -> lift.setSpeedRatio(0.5)));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.DPAD_LEFT).whenPressed(new InstantCommand(() -> lift.setSpeedRatio(0.25)));
         Hw.gpOperator.getGamepadButton(GamepadKeys.Button.X).whenPressed(new InstantCommand(() -> claw.openFull()));
+
 
         // Driver Buttons
         Hw.gpDriver.getGamepadButton(GamepadKeys.Button.BACK).whenPressed(new InstantCommand(() -> drive.setIsFieldOriented()));

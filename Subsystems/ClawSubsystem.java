@@ -15,12 +15,17 @@ public class ClawSubsystem extends SubsystemBase {
     }
 
     public void close(){
+
         Hw.clawServo.turnToAngle(k.CLAW.Close);
 
     }
     public void open() {
         Hw.clawServo.turnToAngle(k.CLAW.Open);
 
+
+    }
+    public void disable(){
+        Hw.clawServo.disable();
     }
     public void openFull(){
         Hw.clawServo.turnToAngle(k.CLAW.FullOpen);

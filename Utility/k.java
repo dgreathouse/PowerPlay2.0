@@ -13,6 +13,7 @@ public final class k {
         public static final double RotationScale = 0.5;
         public static double DriveScale = 0.5;
         public static double SlewRateLimit = 0.5;
+        public static double AutoLocationDistance = 24;
     }
 
     public static final class LIFT {
@@ -28,6 +29,7 @@ public final class k {
         public static final double InchPerCnt = 0.008201937;
         public static double AutoLocationInches = 0.0;
         public static double AutoMaxSpeed = 1.0;
+
     }
 
     public static final class CLAW {

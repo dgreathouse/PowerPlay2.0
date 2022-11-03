@@ -86,10 +86,10 @@ public class DriveSubsystem extends SubsystemBase {
                 rtn = -(left - back)/2;
                 break;
             case ang_120: // Right, Back
-                rtn = (-right + back)/2;
+                rtn = -(-right + back)/2;
                 break;
             case ang_300:
-                rtn = -(-right + back)/2;
+                rtn = (-right + back)/2;
                 break;
             default:
                 rtn = 0;

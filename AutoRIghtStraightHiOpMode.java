@@ -4,6 +4,7 @@ import com.arcrobotics.ftclib.command.CommandOpMode;
 import com.arcrobotics.ftclib.command.CommandScheduler;
 import com.arcrobotics.ftclib.util.Direction;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.Commands.AutoStraightHi;
 import org.firstinspires.ftc.teamcode.Subsystems.ArmSubsystem;
@@ -14,6 +15,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.LiftSubsystem;
 import org.firstinspires.ftc.teamcode.Utility.Hw;
 
 @Autonomous(name = "Right Straight Hi", group = "My OpMode")
+@Disabled
 public class AutoRIghtStraightHiOpMode extends CommandOpMode {
     DriveSubsystem m_drive;
     LiftSubsystem m_lift;

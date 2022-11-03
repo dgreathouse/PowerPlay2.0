@@ -15,17 +15,15 @@ import org.firstinspires.ftc.teamcode.Utility.ClawEnum;
 import org.firstinspires.ftc.teamcode.Utility.DAngle;
 import org.firstinspires.ftc.teamcode.Utility.k;
 
-public class AutoStraightHi extends SequentialCommandGroup {
+public class AutoMid extends SequentialCommandGroup {
 
-    public AutoStraightHi(CommandOpMode _opMode, DriveSubsystem _drive, LiftSubsystem _lift, ClawSubsystem _claw, ColorSensorSubsystem _color, ArmSubsystem _arm, Direction _side) {
-        DAngle toHiJunction = DAngle.ang_60;
-        DAngle awayHiJunction = DAngle.ang_240;
-        double toHiJunctionIn = 10.5;
-        k.COLOR.ColorNumber = 2;
+    public AutoMid(CommandOpMode _opMode, DriveSubsystem _drive, LiftSubsystem _lift, ClawSubsystem _claw, ColorSensorSubsystem _color, ArmSubsystem _arm, Direction _side) {
+
+        DAngle awayMidJunction = DAngle.ang_120;
+        double toMidJunctionIn = 5;
         if(_side == Direction.RIGHT){
-            toHiJunction = DAngle.ang_300;
-            awayHiJunction = DAngle.ang_120;
-            toHiJunctionIn = 14.5;
+            awayMidJunction = DAngle.ang_240;
+            toMidJunctionIn = 7;
         }
         
         addCommands(
@@ -42,24 +40,23 @@ public class AutoStraightHi extends SequentialCommandGroup {
                 new LiftAutoMoveTimeCommand(_opMode, _lift, 0.35, 3)
             ),
             new ParallelCommandGroup(
-                 new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, 31, 7.0),
-                 new LiftAutoMoveTimeCommand(_opMode, _lift, 0.75, 3),
-                 new ColorSensorSenseCommand(_opMode, _color,1.5)
+                 new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, 12, 3.0),
+                 new LiftAutoMoveTimeCommand(_opMode, _lift, 0.85, 3),
+                 new ColorSensorSenseCommand(_opMode, _color,1)
             ),
-            new DriveAutoMoveCommand(_opMode,_drive, toHiJunction, 0.4, toHiJunctionIn, 5.0),
+            new DriveAutoRotateCommand(_opMode, _drive, -90, 0.5, 3.0),
+            new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, toMidJunctionIn, 3.0),
             new ClawAutoCommand(_opMode, _claw, ClawEnum.OPEN),
-            new DriveAutoMoveCommand(_opMode,_drive, awayHiJunction, 0.4, 10, 5.0),
+            new DriveAutoMoveCommand(_opMode,_drive, awayMidJunction, 0.4, 15, 5.0),
             new ParallelCommandGroup(
                 // Close the claw to insure lowering is ok
                 new ClawAutoCommand(_opMode, _claw, ClawEnum.CLOSE),
-                // Rotate to the left
-                new DriveAutoRotateCommand(_opMode, _drive, -90, 0.5, 5.0),
+                // Drive to location
+                new DriveAutoMoveColorCommand(_opMode,_drive, DAngle.ang_0, 0.5, 3.0, _side),
                 // Lower lift to the bottom
                 new LiftAutoMoveTimeCommand(_opMode, _lift, -0.75, 3)
             ),
-            new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_180, 0.5, -((k.COLOR.ColorNumber-2)*20), 3.0),
             new DriveAutoRotateCommand(_opMode, _drive, 0, 0.5, 3.0)
-
         );
     }
 }
