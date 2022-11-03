@@ -12,7 +12,6 @@ public final class k {
         public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.005,0.001,0,0);
         public static final double RotationScale = 0.5;
         public static double DriveScale = 0.5;
-        public static double SlewRateLimit = 0.5;
         public static double AutoLocationDistance = 24;
     }
 

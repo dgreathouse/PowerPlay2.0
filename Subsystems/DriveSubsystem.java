@@ -23,17 +23,13 @@ public class DriveSubsystem extends SubsystemBase {
     double m_ySpeed, m_xSpeed, m_zRotation;
     public DriveSubsystem(CommandOpMode _opMode){
         m_opMode = _opMode;
-        xSRL = new SlewRateLimiter(k.DRIVE.SlewRateLimit);
-        ySRL = new SlewRateLimiter(k.DRIVE.SlewRateLimit);
-        zSRL = new SlewRateLimiter(k.DRIVE.SlewRateLimit);
+
     }
     public boolean m_isFieldOriented = true;
     public double m_FOMAngle = 0;
     public boolean m_isSlewLimited = false;
 
-    public SlewRateLimiter xSRL;
-    public SlewRateLimiter ySRL;
-    public SlewRateLimiter zSRL;
+
 
     public DriveSubsystem(){
 
@@ -152,13 +148,7 @@ public class DriveSubsystem extends SubsystemBase {
         Hw.rightDrive.setRunMode(Motor.RunMode.RawPower);
         Hw.backDrive.setRunMode(Motor.RunMode.RawPower);
     }
-    public void setSlewRate(){
-        double val =  Hw.gpDriver.getTrigger(GamepadKeys.Trigger.LEFT_TRIGGER);
-        k.DRIVE.SlewRateLimit = val;
-        xSRL.setRateLimit(val);
-        ySRL.setRateLimit(val);
-        zSRL.setRateLimit(val);
-    }
+
     public void toggleSlewRateLimiter(){
         m_isSlewLimited = !m_isSlewLimited;
     }

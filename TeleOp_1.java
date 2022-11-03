@@ -74,7 +74,7 @@ public class TeleOp_1 extends CommandOpMode {
         Hw.gpDriver.getGamepadButton(GamepadKeys.Button.DPAD_DOWN).whenPressed(new InstantCommand(() -> drive.setSpeedRatio(0.5)));
         Hw.gpDriver.getGamepadButton(GamepadKeys.Button.DPAD_LEFT).whenPressed(new InstantCommand(() -> drive.setSpeedRatio(0.25)));
         Hw.gpDriver.getGamepadButton(GamepadKeys.Button.B).whenPressed(new InstantCommand(() -> drive.toggleSlewRateLimiter()));
-        Hw.gpDriver.getGamepadButton(GamepadKeys.Button.A).whenPressed(new InstantCommand(() -> drive.setSlewRate()));
+
 
         // register Subsystems
         register(drive, lift, claw, arm);
