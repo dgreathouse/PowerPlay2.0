@@ -34,7 +34,7 @@ public class DriveAutoRotateCommand extends CommandBase {
         m_pidfRotation.setOutputRange(0,m_maxSpeed);
         m_pidfRotation.setSetpoint(m_angle);
         m_pidfRotation.setInputRange(0,m_angle*2);
-        m_pidfRotation.setIntegralRange(-0.2, 0.2);
+        m_pidfRotation.setIntegralRange(-0.1, 0.1);
         m_pidfRotation.setTolerance(1);
         m_pidfRotation.enable();
         m_elapsedTimer.reset();

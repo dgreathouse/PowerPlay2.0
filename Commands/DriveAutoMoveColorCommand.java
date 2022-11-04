@@ -50,6 +50,7 @@ public class DriveAutoMoveColorCommand extends CommandBase {
             m_inches *= -1;
         }else if(k.COLOR.ColorNumber == 2){
             m_inches = 0;
+
         }
         m_pidfMove = new PIDFController(k.DRIVE.MovePIDFCoef);
         m_pidfMove.setOutputRange(0,m_maxSpeed);

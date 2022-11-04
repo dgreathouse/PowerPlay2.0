@@ -160,7 +160,7 @@ public class DriveSubsystem extends SubsystemBase {
         m_opMode.telemetry.addData("Robot Ang Deg = ", -Hw.imu.getAbsoluteHeading());
         m_opMode.telemetry.addData("zRotation = ", m_zRotation);
         m_opMode.telemetry.addData("FOM Angle = ", m_FOMAngle);
-        m_opMode.telemetry.addData("SlewRate = ", k.DRIVE.SlewRateLimit);
+
     }
 
 }

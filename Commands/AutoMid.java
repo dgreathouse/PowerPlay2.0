@@ -35,11 +35,11 @@ public class AutoMid extends SequentialCommandGroup {
     public AutoMid(CommandOpMode _opMode, DriveSubsystem _drive, LiftSubsystem _lift, ClawSubsystem _claw, ColorSensorSubsystem _color, ArmSubsystem _arm, Direction _side) {
         double sign = 1.0;  // Used for which direction to turn for left or right
         DAngle awayMidJunction = DAngle.ang_120; // The angle to slide away from Junction for L/R
-        double toMidJunctionIn = 5; // Inched to go to Mid since lineup is different on L/R
+        double toMidJunctionIn = 2; // Inched to go to Mid since lineup is different on L/R
         // Change all the above numbers that default for left if on the right side
         if(_side == Direction.RIGHT){
             awayMidJunction = DAngle.ang_240;
-            toMidJunctionIn = 7;
+            toMidJunctionIn = 5;
             sign = -1;
         }
         
@@ -58,30 +58,30 @@ public class AutoMid extends SequentialCommandGroup {
             ),
             new ParallelCommandGroup(
                  // Drive toward the signal cone
-                 new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, 12, 3.0),
+                 new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, 24.5, 7.0),
                  // Lift the claw above the cone and Mid junction
-                 new LiftAutoMoveTimeCommand(_opMode, _lift, 1, 2),
+                 new LiftAutoMoveTimeCommand(_opMode, _lift, 1, .9),
                  // Sense the color of the signal sleeve
-                 new ColorSensorSenseCommand(_opMode, _color,1)
+                 new ColorSensorSenseCommand(_opMode, _color,1.25)
             ),
             // Rotate to the Mid Junction
-            new DriveAutoRotateCommand(_opMode, _drive, sign * 90, 0.3, 3.0),
+            new DriveAutoRotateCommand(_opMode, _drive, sign * 90, 0.35, 5.0),
             // Move to the Mid Junction
             new DriveAutoMoveCommand(_opMode,_drive, DAngle.ang_0, 0.4, toMidJunctionIn, 3.0),
             // Open the claw and drop the cone
             new ClawAutoCommand(_opMode, _claw, ClawEnum.OPEN),
             // Drive at angle to location 2
-            new DriveAutoMoveCommand(_opMode,_drive, awayMidJunction, 0.4, 15, 5.0),
+            new DriveAutoMoveCommand(_opMode,_drive, awayMidJunction, 0.4, 12, 5.0),
             new ParallelCommandGroup(
                 // Close the claw to insure lowering is ok
                 new ClawAutoCommand(_opMode, _claw, ClawEnum.CLOSE),
                 // Drive to location
                 new DriveAutoMoveColorCommand(_opMode,_drive, DAngle.ang_0, 0.5, 3.0, _side),
                 // Lower lift below hinge
-                new LiftAutoMoveTimeCommand(_opMode, _lift, -0.75, 2)
+                new LiftAutoMoveTimeCommand(_opMode, _lift, -0.75, 1.25)
             ),
             // Rotate to straight ahead so Field Oriented Mode works for TeleOp
-            new DriveAutoRotateCommand(_opMode, _drive, 0, 0.5, 3.0)
+            new DriveAutoRotateCommand(_opMode, _drive, 0, 0.5, 4.0)
         );
     }
 }

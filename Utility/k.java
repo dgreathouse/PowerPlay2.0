@@ -6,13 +6,13 @@ public final class k {
     public static final class DRIVE {
         public static final double InchPerCount = 0.0315;
         public static final double AngleLimit = 0.8;
-        public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.25,0.075,0.0,0);
+        public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.25,0.035,0.0,0);
         //public static final PIDFCoefficients MovePIDFCoef= new PIDFCoefficients(0.06,0.00475,0.0,0);
-        public static final PIDFCoefficients MoveRotatePIDFCoef= new PIDFCoefficients(.008,0,0,0);
-        public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.005,0.001,0,0);
+        public static final PIDFCoefficients MoveRotatePIDFCoef= new PIDFCoefficients(.01,0.0,0,0);
+        public static final PIDFCoefficients RotatePIDFCoef= new PIDFCoefficients(0.005,0.0025,0,0);
         public static final double RotationScale = 0.5;
         public static double DriveScale = 0.5;
-        public static double AutoLocationDistance = 24;
+        public static double AutoLocationDistance = 23;
     }
 
     public static final class LIFT {

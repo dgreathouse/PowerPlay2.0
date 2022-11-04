@@ -42,7 +42,7 @@ public class DriveAutoMoveCommand extends CommandBase {
         m_pidfMove.setSetpoint(m_inches);
         m_pidfMove.setInputRange(0,m_inches*2);
         m_pidfMove.setIntegralRange(0, 0.25);
-        m_pidfMove.setTolerance(0.1);
+        m_pidfMove.setTolerance(0.05);
         m_drive.resetMotors();
         m_pidfMove.enable();
         m_elapsedTimer.reset();
